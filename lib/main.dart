@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:library_sample/view/image_gallary_saver_widget.dart';
 import 'package:library_sample/view/secure_storage_widget.dart';
 
 void main() {
@@ -48,14 +49,18 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Column(
-          children: <Widget>[
-            SecureStorageWidget(),
-            
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: <Widget>[
+              SecureStorageWidget(),
+              Divider(color: Colors.black,),
+              ImageGallarySaverWidget(),
+              
 
 
-          ],
+            ],
+          ),
         ),
       ),
     );
