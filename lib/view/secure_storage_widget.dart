@@ -25,6 +25,10 @@ class _SecureStorageWidgetState extends State<SecureStorageWidget> {
         child: Column(
       mainAxisSize: MainAxisSize.min,
       children: [
+        Text(
+          "SecureStorage",
+          style: TextStyle(fontSize: 20),
+        ),
         TextField(
           decoration: const InputDecoration(
             icon: Icon(Icons.face),
@@ -61,41 +65,43 @@ class _SecureStorageWidgetState extends State<SecureStorageWidget> {
           child: Text("Secure_storageに保存"),
         ),
         TextButton(
-            onPressed: () async {
-              Map<String, String> map = await storage.readAll();
-              List<Content> contents =
-                  map.entries.map((e) => Content(e.key, e.value)).toList();
+          onPressed: () async {
+            Map<String, String> map = await storage.readAll();
+            List<Content> contents =
+                map.entries.map((e) => Content(e.key, e.value)).toList();
 
-              showModalBottomSheet(
-                isScrollControlled: true,
-                  context: context,
-                  builder: (BuildContext context) {
-                    return Container(
-                      height: 300,
-                      margin: EdgeInsets.all(10),
-                      padding: EdgeInsets.all(10),
-                      child: ListView.builder(
-                          itemCount: contents.length,
-                          itemBuilder: (context, index) {
-                            return Container(
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  Text(
-                                    "key:" + contents[index].key,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                  Text("value:" + contents[index].value,
-                                      overflow: TextOverflow.ellipsis),
-                                ],
-                              ),
-                            );
-                          }),
-                    );
-                  });
-            },
-            child: Text("リストを表示")),
+            showModalBottomSheet(
+              isScrollControlled: true,
+              context: context,
+              builder: (BuildContext context) {
+                return Container(
+                  height: 300,
+                  margin: EdgeInsets.all(10),
+                  padding: EdgeInsets.all(10),
+                  child: ListView.builder(
+                    itemCount: contents.length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Text(
+                              "key:" + contents[index].key,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            Text("value:" + contents[index].value,
+                                overflow: TextOverflow.ellipsis),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+                );
+              },
+            );
+          },
+          child: Text("リストを表示"),
+        ),
       ],
     ));
   }

@@ -50,10 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Column(
-
-          children: <Widget>[
-            SecureStorageWidget()
-          ],
+          children: <Widget>[SecureStorageWidget()],
         ),
       ),
     );
