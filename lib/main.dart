@@ -57,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Divider(color: Colors.black,),
               ImageGallarySaverWidget(),
               Divider(color: Colors.black,),
-              NotificationWidget(),
+              // NotificationWidget(),
               
 
 
