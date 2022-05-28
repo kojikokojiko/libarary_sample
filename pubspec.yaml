@@ -39,6 +39,10 @@ dependencies:
   flutter_localizations: # 追加
     sdk: flutter
   flutter_keyboard_visibility:
+  dio:
+  image_gallery_saver:
+  fluttertoast:
+  permission_handler:
 
 
 dev_dependencies:
