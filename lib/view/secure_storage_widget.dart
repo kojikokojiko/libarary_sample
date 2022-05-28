@@ -71,14 +71,14 @@ class _SecureStorageWidgetState extends State<SecureStorageWidget> {
                 map.entries.map((e) => Content(e.key, e.value)).toList();
 
             showModalBottomSheet(
-              isScrollControlled: true,
+              // isScrollControlled: true,
               context: context,
               builder: (BuildContext context) {
                 return Container(
                   height: 300,
                   margin: EdgeInsets.all(10),
                   padding: EdgeInsets.all(10),
-                  child: ListView.builder(
+                  child: (contents.length==0)?Text("Nothing"):ListView.builder(
                     itemCount: contents.length,
                     itemBuilder: (context, index) {
                       return Container(
@@ -101,6 +101,12 @@ class _SecureStorageWidgetState extends State<SecureStorageWidget> {
             );
           },
           child: Text("リストを表示"),
+        ),
+        TextButton(
+          onPressed: ()async {
+            await storage.deleteAll();
+          },
+          child: Text("リストを削除"),
         ),
       ],
     ));
