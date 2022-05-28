@@ -38,6 +38,7 @@ dependencies:
   adaptive_dialog:
   flutter_localizations: # 追加
     sdk: flutter
+  flutter_keyboard_visibility:
 
 
 dev_dependencies:
