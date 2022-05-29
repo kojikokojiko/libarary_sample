@@ -6,6 +6,7 @@ import 'package:library_sample/view/keyboard_visibility.dart';
 import 'package:library_sample/view/secure_storage_widget.dart';
 import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:library_sample/view/web_view.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -65,6 +66,10 @@ class _MyHomePageState extends State<MyHomePage> {
               AdaptiveDialogWidget(),
               Divider(color: Colors.black,),
               KeyboardVisibility(),
+              Divider(color: Colors.black,),
+              WebViewWieget(),
+              Divider(color: Colors.black,),
+              WebViewWieget(),
               
 
 

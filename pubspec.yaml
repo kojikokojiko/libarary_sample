@@ -43,6 +43,8 @@ dependencies:
   image_gallery_saver:
   fluttertoast:
   permission_handler:
+  cached_network_image:
+  webview_flutter:
 
 
 dev_dependencies:
