@@ -69,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Divider(color: Colors.black,),
               WebViewWieget(),
               Divider(color: Colors.black,),
-              WebViewWieget(),
+              // WebViewWieget(),
               
 
 
