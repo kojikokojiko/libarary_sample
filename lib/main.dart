@@ -4,7 +4,7 @@ import 'package:library_sample/view/adaptive_dialog.dart';
 import 'package:library_sample/view/image_gallary_saver_widget.dart';
 import 'package:library_sample/view/keyboard_visibility.dart';
 import 'package:library_sample/view/secure_storage_widget.dart';
-import 'package:adaptive_dialog/adaptive_dialog.dart';
+
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:library_sample/view/web_view.dart';
 void main() {
@@ -47,7 +47,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: SingleChildScrollView(
         child: Center(
           child: Column(
-            children: <Widget>[
+            children: const <Widget>[
               SecureStorageWidget(),
               Divider(color: Colors.black,),
               ImageGallarySaverWidget(),
@@ -67,9 +66,8 @@ class _MyHomePageState extends State<MyHomePage> {
               Divider(color: Colors.black,),
               KeyboardVisibility(),
               Divider(color: Colors.black,),
-              WebViewWieget(),
+              WebViewWidget(),
               Divider(color: Colors.black,),
-              // WebViewWieget(),
               
 
 

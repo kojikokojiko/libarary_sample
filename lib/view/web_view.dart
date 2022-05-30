@@ -4,21 +4,28 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-class WebViewWieget extends StatelessWidget {
+class WebViewWidget extends StatelessWidget {
+  const WebViewWidget({Key? key}) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: ElevatedButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute<WebViewScreen>(
-              builder: (BuildContext _context) => WebViewScreen(),
-            ),
-          );
-        },
-        child: const Text('Launch Web View'),
+      child: Column(
+        children: [
+          const Text("Webview",style: TextStyle(fontSize: 20),),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute<WebViewScreen>(
+                  builder: (BuildContext context) => const WebViewScreen(),
+                ),
+              );
+            },
+            child: const Text('Launch Web View'),
+          ),
+        ],
       ),
     );
   }
@@ -29,10 +36,10 @@ class WebViewScreen extends StatefulWidget {
   const WebViewScreen({Key? key}) : super(key: key);
 
   @override
-  _WebViewScreenState createState() => _WebViewScreenState();
+  WebViewScreenState createState() => WebViewScreenState();
 }
 
-class _WebViewScreenState extends State<WebViewScreen> {
+class WebViewScreenState extends State<WebViewScreen> {
 
   final Completer<WebViewController> _controller =
   Completer<WebViewController>();

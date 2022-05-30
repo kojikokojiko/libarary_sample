@@ -1,4 +1,4 @@
-import 'dart:async';
+
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 import 'package:cached_network_image/cached_network_image.dart';
@@ -13,12 +13,12 @@ class ImageGallarySaverWidget extends StatefulWidget {
   const ImageGallarySaverWidget({Key? key}) : super(key: key);
 
   @override
-  _ImageGallarySaverWidgetState createState() =>
-      _ImageGallarySaverWidgetState();
+  ImageGallarySaverWidgetState createState() =>
+      ImageGallarySaverWidgetState();
 }
 
-class _ImageGallarySaverWidgetState extends State<ImageGallarySaverWidget> {
-  GlobalKey _globalKey = GlobalKey();
+class ImageGallarySaverWidgetState extends State<ImageGallarySaverWidget> {
+  final GlobalKey _globalKey = GlobalKey();
   String url =
       'https://ss0.baidu.com/94o3dSag_xI4khGko9WTAnF6hhy/image/h%3D300/sign=a62e824376d98d1069d40a31113eb807/838ba61ea8d3fd1fc9c7b6853a4e251f94ca5f46.jpg';
 
@@ -33,7 +33,6 @@ class _ImageGallarySaverWidgetState extends State<ImageGallarySaverWidget> {
         Uint8List.fromList(response.data),
         quality: 60,
         name: "hello");
-    print(result);
     _toastInfo("$result");
   }
 
@@ -41,12 +40,10 @@ class _ImageGallarySaverWidgetState extends State<ImageGallarySaverWidget> {
     RenderRepaintBoundary boundary =
         _globalKey.currentContext!.findRenderObject() as RenderRepaintBoundary;
     ui.Image image = await boundary.toImage();
-    ByteData? byteData = await (image.toByteData(format: ui.ImageByteFormat.png)
-        as FutureOr<ByteData?>);
+    ByteData? byteData = await (image.toByteData(format: ui.ImageByteFormat.png));
     if (byteData != null) {
       final result =
           await ImageGallerySaver.saveImage(byteData.buffer.asUint8List());
-      print(result);
       _toastInfo(result.toString());
     }
   }
@@ -57,7 +54,6 @@ class _ImageGallarySaverWidgetState extends State<ImageGallarySaverWidget> {
     ].request();
 
     final info = statuses[Permission.storage].toString();
-    print(info);
     _toastInfo(info);
   }
 
@@ -70,51 +66,49 @@ class _ImageGallarySaverWidgetState extends State<ImageGallarySaverWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(children: [
-        Text(
-          "Save Gallary Image Saver\n＆\nCachedNetworkImage ",
-          style: TextStyle(fontSize: 20),
-        ),
-        RepaintBoundary(
-          key: _globalKey,
-          child: Container(
-            width: 200,
-            height: 200,
-            color: Colors.red,
-          ),
-        ),
-        Container(
-          padding: EdgeInsets.only(top: 15),
-          child: RaisedButton(
-            onPressed: _saveScreen,
-            child: Text("Save Local Image"),
-          ),
+    return Column(children: [
+      const Text(
+        "Save Gallary Image Saver\n＆\nCachedNetworkImage ",
+        style: TextStyle(fontSize: 20),
+      ),
+      RepaintBoundary(
+        key: _globalKey,
+        child: Container(
           width: 200,
-          height: 44,
+          height: 200,
+          color: Colors.red,
         ),
-        SizedBox(height: 20,),
-        Text("CachedNetworkImageで画像取得",),
-        CachedNetworkImage(
-          imageUrl: url,
-          progressIndicatorBuilder: (_, url, download) {
-            if (download.progress != null) {
-              final percent = download.progress! * 100;
-              return Text("$percent% done loading");
-            }
-            return Text("Loaded $url");
-          },
+      ),
+      Container(
+        padding: const EdgeInsets.only(top: 15),
+        width: 200,
+        height: 44,
+        child: ElevatedButton(
+          onPressed: _saveScreen,
+          child: const Text("Save Local Image"),
         ),
-        Container(
-          padding: EdgeInsets.only(top: 15),
-          child: RaisedButton(
-            onPressed: _getHttp,
-            child: Text("Save network image"),
-          ),
-          width: 200,
-          height: 44,
+      ),
+      const SizedBox(height: 20,),
+      const Text("CachedNetworkImageで画像取得",),
+      CachedNetworkImage(
+        imageUrl: url,
+        progressIndicatorBuilder: (_, url, download) {
+          if (download.progress != null) {
+            final percent = download.progress! * 100;
+            return Text("$percent% done loading");
+          }
+          return Text("Loaded $url");
+        },
+      ),
+      Container(
+        padding: const EdgeInsets.only(top: 15),
+        width: 200,
+        height: 44,
+        child: ElevatedButton(
+          onPressed: _getHttp,
+          child: const Text("Save network image"),
         ),
-      ]),
-    );
+      ),
+    ]);
   }
 }
