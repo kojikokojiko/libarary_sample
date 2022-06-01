@@ -16,4 +16,4 @@
 キーボードのフォーカス判定できる
 - Webview
 Flutter のWebページを表示
-
+- permission_handler
